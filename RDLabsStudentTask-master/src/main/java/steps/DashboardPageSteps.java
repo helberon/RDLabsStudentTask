@@ -49,4 +49,14 @@ public class DashboardPageSteps extends DefaultStepsData {
                 throw new IllegalStateException("Unexpected value: " + itemsContainer);
         }
     }
+
+    public int countDocuments(){
+        return dashboardPage.getDocumentsContainer().thenFindAll(By.xpath("//li[contains(@id,'docTitle_.')]")).size();
+    }
+
+    public int getDocumentsounter(){
+        int counter=0;
+        String docs= dashboardPage.getDocumentsContainer().findElement(By.xpath("//div[@class='document-count-text']/div[@class='right']")).getText().split("/")[1].trim();
+        return Integer.parseInt(docs);
+    }
 }
