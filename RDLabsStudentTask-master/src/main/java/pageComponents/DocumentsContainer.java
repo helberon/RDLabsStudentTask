@@ -9,5 +9,4 @@ public class DocumentsContainer extends ItemsContainer {
     public DocumentsContainer(WebElementFacade container) {
         super(container);
     }
-
 }

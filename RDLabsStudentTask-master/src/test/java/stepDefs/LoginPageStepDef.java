@@ -62,4 +62,14 @@ public class LoginPageStepDef extends DefaultStepsData {
             softly.assertThat(isButtonVisible).as(String.format("button %s not visible", socialMediaButtonName)).isTrue();
         }
     }
+
+    @Then("I check that text $userName is shown by default on login page in user name field")
+    public void checkDefaultUserNameField (String userName){
+        softly.assertThat(loginPage.getLoginInputField().getValue()).as("Wrong default value").isEqualTo(userName);
+    }
+
+    @Then("I check that pop up message with text $errorText is shown")
+    public void checkPopUpText(String errorText){
+        softly.assertThat(loginPageSteps.getPopUpErrorMessage()).as("Wrong error text in pop up").isEqualTo(errorText);
+    }
 }
