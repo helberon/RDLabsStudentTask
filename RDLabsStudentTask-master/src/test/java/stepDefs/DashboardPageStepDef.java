@@ -4,7 +4,6 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.openqa.selenium.By;
 import steps.CommonSteps;
 import steps.DashboardPageSteps;
 import steps.DefaultStepsData;
@@ -52,11 +51,10 @@ public class DashboardPageStepDef extends DefaultStepsData {
         softly.assertThat(dashboardPageSteps.checkThatLegendAppearsIn(sectionName)).as("Legend component not appers").isTrue();
     }
 
-    @Then("I check that news counter and actual amount of news are same")
-    public void checkThatCountersAreSame(){
-        System.out.println("NUMBER OF DOCS  "+dashboardPageSteps.getDocumentsounter()+" !!!!!!");
-//        softly.assertThat(dashboardPageSteps.countDocuments()).as("Something goes wrong").
-//                isEqualTo(dashboardPageSteps.getDocumentsounter());
+    @Then("I check that $sectionName counter and actual amount of elements are same")
+    public void checkThatCountersAreSame(String sectionName){
+        softly.assertThat(dashboardPageSteps.getRealCounter(sectionName)).as("Counters doesn't match").
+                isEqualTo(dashboardPageSteps.getExpectedCounter(sectionName));
     }
 
 }

@@ -50,13 +50,32 @@ public class DashboardPageSteps extends DefaultStepsData {
         }
     }
 
-    public int countDocuments(){
-        return dashboardPage.getDocumentsContainer().thenFindAll(By.xpath("//li[contains(@id,'docTitle_.')]")).size();
+    public int getRealCounter(String sectionName){
+        ItemsContainer itemsContainer = ItemsContainer.getItemsContainerName(sectionName);
+        switch (itemsContainer){
+            case DOCUMENTS:
+                return dashboardPage.getDocumentsContainer().thenFindAll(By.xpath("//li[contains(@id,'docTitle_.')]")).size();
+            case NEWS:
+                return dashboardPage.getNewsContainer().thenFindAll(By.xpath("//div[@id='dashboard__viewNewsOnDashboard']//li[@class='collection-item avatar']")).size();
+            default:
+                throw new IllegalStateException("Unexpected value: " + itemsContainer);
+
+        }
+
     }
 
-    public int getDocumentsounter(){
-        int counter=0;
-        String docs= dashboardPage.getDocumentsContainer().findElement(By.xpath("//div[@class='document-count-text']/div[@class='right']")).getText().split("/")[1].trim();
-        return Integer.parseInt(docs);
+    public int getExpectedCounter(String sectionName){
+        ItemsContainer itemsContainer = ItemsContainer.getItemsContainerName(sectionName);
+        String rawWithExpectedCounter;
+        switch(itemsContainer) {
+            case DOCUMENTS:
+                rawWithExpectedCounter = dashboardPage.getShownDocuments().getText().split("/")[1].trim();
+                return Integer.parseInt(rawWithExpectedCounter);
+            case NEWS:
+                 rawWithExpectedCounter = dashboardPage.getShownNews().getText().split("/")[1].trim();
+                return Integer.parseInt(rawWithExpectedCounter);
+            default:
+                throw new IllegalStateException("Unexpected value: " + itemsContainer);
+        }
     }
 }
