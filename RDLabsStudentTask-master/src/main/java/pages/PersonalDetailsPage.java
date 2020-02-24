@@ -15,6 +15,9 @@ public class PersonalDetailsPage extends BasePage {
     @FindBy(css = "#emp_birthday")
     private WebElementFacade dateOfBirthInputField;
 
+    @FindBy(linkText = "Should be on or before today")
+    private WebElementFacade dateOfBirthErrorMessage;
+
     @FindBy(xpath = "//div[@id='nation_code_inputfileddiv']//input")
     private WebElementFacade nationalitySelect;
 
@@ -32,6 +35,7 @@ public class PersonalDetailsPage extends BasePage {
         log.info(String.format("Putting %s date into [Date of birth] field", date));
         dateOfBirthInputField.clear();
         dateOfBirthInputField.waitUntilEnabled().sendKeys(date);
+        dateOfBirthInputField.submit();
     }
 
     public void clickOnMaleRadioButton() {

@@ -59,4 +59,16 @@ public class PersonalDatailsStepDef extends DefaultStepsData {
     public void radioButtonClick(String genderName){
         personalDetailsSteps.clickOnRadioButton(genderName);
     }
+
+    @When("I change Date of Birth added 1 day to today's day")
+    public void changeDateOfBirthToToday(){
+        String currentDate = personalDetailsSteps.getValueFromDateOfBirthField();
+       String today = getDateInFutureOrPastFromNow(MY_DATEPATTERN,1);
+        personalDetailsSteps.enterDateIntoDateBirthField(today);
+    }
+
+    @Then("'$errorMessage' error message appears")
+    public void verifyWrongDateOfBirthAlert(String errorMessage){
+        softly.assertThat(personalDetailsPage.getDateOfBirthErrorMessage()).as("Message wasn't shown").isEqualTo(errorMessage);
+    }
 }
