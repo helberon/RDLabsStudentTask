@@ -5,13 +5,14 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.junit.Test;
+import org.openqa.selenium.support.ui.Select;
 import steps.DefaultStepsData;
 import steps.PersonalDetailsSteps;
 
 import java.util.List;
 
-import static utils.DateUtils.*;
+import static utils.DateUtils.MY_DATEPATTERN;
+import static utils.DateUtils.getDateInFutureOrPastFromNow;
 import static utils.SessionVariables.DATE_OF_BIRTH;
 
 public class PersonalDatailsStepDef extends DefaultStepsData {
@@ -62,7 +63,6 @@ public class PersonalDatailsStepDef extends DefaultStepsData {
 
     @When("I change Date of Birth added 1 day to today's day")
     public void changeDateOfBirthToToday(){
-        String currentDate = personalDetailsSteps.getValueFromDateOfBirthField();
        String today = getDateInFutureOrPastFromNow(MY_DATEPATTERN,1);
         personalDetailsSteps.enterDateIntoDateBirthField(today);
     }
@@ -70,5 +70,20 @@ public class PersonalDatailsStepDef extends DefaultStepsData {
     @Then("'$errorMessage' error message appears")
     public void verifyWrongDateOfBirthAlert(String errorMessage){
         softly.assertThat(personalDetailsPage.getDateOfBirthErrorMessage()).as("Message wasn't shown").isEqualTo(errorMessage);
+    }
+
+    @Then("I choose default value from EEO Race and Ethnicity field")
+    public void selectOptionFromEEORaceAndEthnicityList(){
+        personalDetailsSteps.selectDefaultValueFromEeoRaceAndEthnicitySelect();
+    }
+
+    @When("I click on Save button")
+    public void clickOnSaveButton(){
+        personalDetailsPage.clickSaveButton();
+    }
+
+    @Then("error message with text $errorText appears")
+    public void verifyRequiredMessage(String errorText){
+        softly.assertThat(personalDetailsPage.getEeoRaceAndEthnicityError().getText()).as("Message wasn't shown").isEqualTo(errorText);
     }
 }

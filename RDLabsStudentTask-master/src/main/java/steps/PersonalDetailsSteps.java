@@ -28,9 +28,15 @@ public class PersonalDetailsSteps extends DefaultStepsData {
     }
 
     @Step
-    public boolean checkRadioButtonStatus(String genderName){
+    public void selectDefaultValueFromEeoRaceAndEthnicitySelect(){
+        personalDetailsPage.getEeoRaceAndEthnicitySelect().click();
+        personalDetailsPage.getEeoRaceAndEthnicitySelect().thenFindAll(By.xpath("./..//li//span")).get(0).click();
+    }
+
+    @Step
+    public boolean checkRadioButtonStatus(String genderName) {
         GenderRadioButton genderRadioButton = GenderRadioButton.getGenderRadioButtonName(genderName);
-        switch (genderRadioButton){
+        switch (genderRadioButton) {
             case FEMALE:
                 return Boolean.parseBoolean(personalDetailsPage.getFemaleRadioButtonFrame().find(By.xpath("./../input")).waitUntilEnabled().getAttribute("checked"));
             case MALE:
@@ -41,9 +47,9 @@ public class PersonalDetailsSteps extends DefaultStepsData {
     }
 
     @Step
-    public void clickOnRadioButton(String genderName){
+    public void clickOnRadioButton(String genderName) {
         GenderRadioButton genderRadioButton = GenderRadioButton.getGenderRadioButtonName(genderName);
-        switch (genderRadioButton){
+        switch (genderRadioButton) {
             case FEMALE:
                 personalDetailsPage.getFemaleRadioButtonFrame().click();
                 break;

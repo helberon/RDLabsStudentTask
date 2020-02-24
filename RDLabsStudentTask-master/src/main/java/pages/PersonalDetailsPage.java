@@ -24,11 +24,17 @@ public class PersonalDetailsPage extends BasePage {
     @FindBy(xpath = "//div[@id='eeo_race_ent_inputfileddiv']//input")
     private WebElementFacade eeoRaceAndEthnicitySelect;
 
+    @FindBy(xpath = "//div[@id='eeo_race_ent_inputfileddiv']//span[@class='help-block']")
+    private WebElementFacade eeoRaceAndEthnicityError;
+
     @FindBy(xpath = "//label[@for='emp_gender_1']")
     private WebElementFacade maleRadioButtonFrame;
 
     @FindBy(xpath = "//label[@for='emp_gender_2']")
     private WebElementFacade femaleRadioButtonFrame;
+
+    @FindBy(xpath = "//form[@id='pimPersonalDetailsForm']//button[@type='submit']")
+    private WebElementFacade saveButtonPersonalDetails;
 
 
     public void enterDateOfBirth(String date) {
@@ -41,5 +47,9 @@ public class PersonalDetailsPage extends BasePage {
     public void clickOnMaleRadioButton() {
         log.info("set Male radio button checked");
         maleRadioButtonFrame.waitUntilVisible().waitUntilClickable().click();
+    }
+
+    public void clickSaveButton(){
+        saveButtonPersonalDetails.submit();
     }
 }

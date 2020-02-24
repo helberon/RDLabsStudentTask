@@ -12,6 +12,7 @@ Scenario: AC-1 Check that Smoker checkBox is not checked by default
 Meta: @regression
 Then check box Smoker is not checked
 
+!-- Need to fix
 Scenario: AC-2 Check value in Date of Birth field is not saved after refresh page without clicking on Save button
 Meta: @regression
 Then I save current Date of Birth to session
@@ -32,11 +33,17 @@ Then I check that Male radio button selected
 And Female radio button become unchecked
 
 !-- TODO implement this scenario
+!-- Need to fix
 Scenario: AC-5 Check that error message "Should be on or before today" must be shown if user enter birth date in future (next day after today)
-Meta: @newTask @debug
+Meta: @newTask
 When I change Date of Birth added 1 day to today's day
 Then 'Should be on or before today' error message appears
 
 !-- TODO implement this scenario
 Scenario: AC-6 Check that error message with text Required appears under EEO Race and Ethnicity field after click on Save button
+Meta: @newTask @debug
+Then I choose default value from EEO Race and Ethnicity field
+When I click on Save button
+Then error message with text Required appears
+
 
