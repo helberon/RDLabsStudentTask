@@ -2,8 +2,10 @@ package stepDefs;
 
 import com.google.common.collect.Ordering;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.junit.Test;
 import steps.DefaultStepsData;
 import steps.PersonalDetailsSteps;
 
@@ -40,5 +42,21 @@ public class PersonalDatailsStepDef extends DefaultStepsData {
         List<String> optionsFromNationalitySelect = personalDetailsSteps.getOptionsFromNationalitySelect();
         boolean isSorted = Ordering.natural().isOrdered(optionsFromNationalitySelect);
         softly.assertThat(isSorted).as("Wrong ordering inside select box").isTrue();
+    }
+
+    @Then("I check that current radio button is $genderName")
+    @Alias("I check that $genderName radio button selected")
+    public void verifyCheckedRadioButtonState(String genderName){
+        softly.assertThat(personalDetailsSteps.checkRadioButtonStatus(genderName)).as("Wrong state this").isTrue();
+    }
+
+    @Then("$genderName radio button become unchecked")
+    public void verifyUncheckedButtonState(String genderName){
+        softly.assertThat(personalDetailsSteps.checkRadioButtonStatus(genderName)).as("Wrong state").isFalse();
+    }
+
+    @When("I click on $genderName radio button")
+    public void radioButtonClick(String genderName){
+        personalDetailsSteps.clickOnRadioButton(genderName);
     }
 }
