@@ -15,7 +15,7 @@ public class PersonalDetailsPage extends BasePage {
     @FindBy(css = "#emp_birthday")
     private WebElementFacade dateOfBirthInputField;
 
-    @FindBy(linkText = "Should be on or before today")
+    @FindBy(xpath = "//input[@id='emp_birthday']/following-sibling::span[@class='help-block-message']")
     private WebElementFacade dateOfBirthErrorMessage;
 
     @FindBy(xpath = "//div[@id='nation_code_inputfileddiv']//input")

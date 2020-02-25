@@ -24,7 +24,7 @@ public class CommonStepDefs extends DefaultStepsData {
     }
 
     @When("refresh page")
-    public void refreshCurrrentPage() {
+    public void refreshCurrentPage() {
         commonSteps.refreshPage();
     }
 

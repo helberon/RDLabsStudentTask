@@ -41,7 +41,7 @@ Then 'Should be on or before today' error message appears
 
 !-- TODO implement this scenario
 Scenario: AC-6 Check that error message with text Required appears under EEO Race and Ethnicity field after click on Save button
-Meta: @newTask @debug
+Meta: @newTask
 Then I choose default value from EEO Race and Ethnicity field
 When I click on Save button
 Then error message with text Required appears

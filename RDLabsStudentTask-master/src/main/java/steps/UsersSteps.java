@@ -1,5 +1,6 @@
 package steps;
 
+import emuns.UsersFilterDropBox;
 import grids.UsersGrid;
 import lombok.extern.slf4j.Slf4j;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -8,6 +9,7 @@ import org.openqa.selenium.By;
 import pageComponents.FilterUsersModalWindow;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import static utils.SessionVariables.FILTER_USERS_WINDOW;
@@ -23,7 +25,7 @@ public class UsersSteps extends DefaultStepsData {
     }
 
     @Step
-    public FilterUsersModalWindow getFiltetUsersWindow() {
+    public FilterUsersModalWindow getFilterUsersWindow() {
         return new FilterUsersModalWindow(usersPage.getFilterUsersModalWindow());
     }
 
@@ -47,8 +49,47 @@ public class UsersSteps extends DefaultStepsData {
     }
 
     @Step
+    public void filterUsersByStatus(String filter,String filterTarget) {
+        UsersFilterDropBox dropBox = UsersFilterDropBox.getUsersFilterDropBox(filter);
+        switch (dropBox) {
+            case STATUS:
+                FilterUsersModalWindow filterUsersStatusModalWindow = FILTER_USERS_WINDOW.get();
+                List<String> statusValues = new ArrayList<String>();
+                filterUsersStatusModalWindow.getStatus().click();
+                List<WebElementFacade> statusList = filterUsersStatusModalWindow.getStatus().thenFindAll(By.xpath("./..//li"));
+                for (WebElementFacade element : statusList) {
+                    statusValues.add(element.waitUntilEnabled().getText());
+                }
+                statusList.get(statusValues.indexOf(filterTarget)).click();
+                break;
+            case ADMIN_ROLE:
+                FilterUsersModalWindow filterUsersRoleModalWindow = FILTER_USERS_WINDOW.get();
+                List<String> roleValues = new ArrayList<String>();
+                filterUsersRoleModalWindow.getAdminRole().click();
+                List<WebElementFacade> roleList = filterUsersRoleModalWindow.getAdminRole().thenFindAll(By.xpath("./..//li"));
+                for (WebElementFacade element : roleList) {
+                    roleValues.add(element.waitUntilEnabled().getText());
+                }
+                roleList.get(roleValues.indexOf(filterTarget)).click();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + dropBox);
+        }
+    }
+
+    @Step
     public List<UsersGrid> getUsersGrid() {
         log.info("Getting [Users] grid");
         return new UsersGrid().getAllItems(usersPage.getDriver());
+    }
+
+    public boolean checkUserPresenceInTable(String userName) {
+        List<UsersGrid> allItems = getUsersGrid();
+        for (UsersGrid gridElem : allItems) {
+            if (gridElem.getEmployeeName().contains(userName)){
+                return true;
+            }
+        }
+        return false;
     }
 }

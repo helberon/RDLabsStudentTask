@@ -21,7 +21,7 @@ public class PersonalDatailsStepDef extends DefaultStepsData {
     PersonalDetailsSteps personalDetailsSteps;
 
     @Then("I save current Date of Birth to session")
-    public void saveCurentDateOfBirthToSession() {
+    public void saveCurrentDateOfBirthToSession() {
         DATE_OF_BIRTH.put(personalDetailsSteps.getValueFromDateOfBirthField());
     }
 
@@ -69,7 +69,7 @@ public class PersonalDatailsStepDef extends DefaultStepsData {
 
     @Then("'$errorMessage' error message appears")
     public void verifyWrongDateOfBirthAlert(String errorMessage){
-        softly.assertThat(personalDetailsPage.getDateOfBirthErrorMessage()).as("Message wasn't shown").isEqualTo(errorMessage);
+        softly.assertThat(personalDetailsPage.getDateOfBirthErrorMessage().getText()).as("Message wasn't shown").isEqualTo(errorMessage);
     }
 
     @Then("I choose default value from EEO Race and Ethnicity field")

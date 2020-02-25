@@ -21,6 +21,11 @@ public class UsersPageStepDef extends DefaultStepsData {
         usersSteps.filterUsersByEmployeeName(employeeName);
     }
 
+    @When("filter users by '$filter' '$filterTarget'")
+    public void filterUsersByStatus(String filter, String filterTarget){
+        usersSteps.filterUsersByStatus(filter, filterTarget);
+    }
+
     @Then("record is shown with following parameters:$table")
     public void checkResultOfFiltering(ExamplesTable examplesTable) {
         Map<String, String> row = examplesTable.getRow(0);
@@ -41,5 +46,15 @@ public class UsersPageStepDef extends DefaultStepsData {
     @When("I click on the Search button in Filter Users window")
     public void clickOnTheSearchButtonInFilterUsersWindow() {
         usersSteps.clickOnTheSearchButton();
+    }
+
+    @Then("I check that Employee with name $userName is NOT shown in the search result")
+    public void checkEmployeeAbsentInSearchResult(String userName){
+        softly.assertThat(usersSteps.checkUserPresenceInTable(userName)).as("Wasn't found any raw").isFalse();
+    }
+
+    @Then("I check that Employee with name $userName is shown in the search result")
+    public void checkEmployeePresentInSearchResult(String userName){
+        softly.assertThat(usersSteps.checkUserPresenceInTable(userName)).as("Wasn't found any raw").isTrue();
     }
 }
