@@ -19,6 +19,7 @@ public class AddWorkShiftModalWindow {
     private WebElementFacade toClockIcon;
     private WebElementFacade hoursPerDayInputField;
 
+
     public AddWorkShiftModalWindow(WebElementFacade addWorkShiftModal) {
         this.addWorkShiftModal = addWorkShiftModal;
         this.saveButton = addWorkShiftModal.find(By.xpath(".//a[text()='Save']"));
