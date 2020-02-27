@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbb65339-c7ca-416d-a795-3534bc6c5a3e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageComponents/FilterUsersModalWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageComponents/FilterUsersModalWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/steps/UsersSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/steps/UsersSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/SessionVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/SessionVariables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepDefs/UsersPageStepDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepDefs/UsersPageStepDef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grids/WorkShiftGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grids/WorkShiftGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/steps/WorkShiftsSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/steps/WorkShiftsSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepDefs/WorkShiftsStepDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepDefs/WorkShiftsStepDefs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/stories/Users.story" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/stories/Users.story" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/stories/WorkShift.story" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/stories/WorkShift.story" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +23,14 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1Y6p1P3QYusMZlBnHcM1jA5UHnP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -32,7 +41,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../kuopassa" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager" selected="JUnit.DebugRunner">
@@ -135,10 +144,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582624421884" />
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1582789499397">
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1582796402342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582789499397" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582796402342" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1582635390509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

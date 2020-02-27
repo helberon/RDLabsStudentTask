@@ -1,5 +1,6 @@
 package steps;
 
+import grids.UsersGrid;
 import grids.WorkShiftGrid;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -33,5 +34,15 @@ public class WorkShiftsSteps extends DefaultStepsData {
     @Step
     private TimePicker getTimePickerElement() {
         return new TimePicker(workShiftPage.getTimePickerLocator());
+    }
+
+    public boolean checkShiftPresenceInTable(String shiftName) {
+        List<WorkShiftGrid> allItems = getWorkShiftGrid();
+        for (WorkShiftGrid gridElem : allItems) {
+            if (gridElem.getWorkShift().contains(shiftName)){
+                return true;
+            }
+        }
+        return false;
     }
 }
