@@ -14,6 +14,7 @@ public enum SessionVariables {
     FIRST_NAME,
     LAST_NAME,
     MIDDLE_NAME,
+    FILTER_USERS_DROP_BOX,
     FILTER_USERS_WINDOW;
 
     SessionVariables() {

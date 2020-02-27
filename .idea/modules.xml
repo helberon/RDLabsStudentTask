@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/RDLabsStudentTask-master.iml" filepath="$PROJECT_DIR$/.idea/RDLabsStudentTask-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rdlabTestProjectOrangehrm.iml" filepath="$PROJECT_DIR$/rdlabTestProjectOrangehrm.iml" />
     </modules>
   </component>
 </project>

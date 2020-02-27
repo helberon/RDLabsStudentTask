@@ -11,6 +11,8 @@ import steps.UsersSteps;
 import java.util.List;
 import java.util.Map;
 
+import static utils.SessionVariables.*;
+
 public class UsersPageStepDef extends DefaultStepsData {
 
     @Steps
@@ -22,8 +24,8 @@ public class UsersPageStepDef extends DefaultStepsData {
     }
 
     @When("filter users by '$filter' '$filterTarget'")
-    public void filterUsersByStatus(String filter, String filterTarget){
-        usersSteps.filterUsersByStatus(filter, filterTarget);
+    public void filterUsers(String filter, String filterTarget){
+        usersSteps.filterUsers(filter, filterTarget);
     }
 
     @Then("record is shown with following parameters:$table")
@@ -39,6 +41,7 @@ public class UsersPageStepDef extends DefaultStepsData {
     }
 
     @When("I open filter users window")
+    @Then("I open filter users window")
     public void openFilterUsersWindow() {
         usersSteps.openFilterWindow();
     }
@@ -56,5 +59,16 @@ public class UsersPageStepDef extends DefaultStepsData {
     @Then("I check that Employee with name $userName is shown in the search result")
     public void checkEmployeePresentInSearchResult(String userName){
         softly.assertThat(usersSteps.checkUserPresenceInTable(userName)).as("Wasn't found any raw").isTrue();
+    }
+
+    @When("I check current state of filters")
+    public void checkFilterState(){
+        FILTER_USERS_DROP_BOX.put(usersSteps.checkFilterStatus());
+
+    }
+
+    @Then("check filters stay same")
+    public void checkFiltersStaySame(){
+        softly.assertThat(usersSteps.checkFilterStatus()).as("Filer was changed").isEqualTo(FILTER_USERS_DROP_BOX.get());
     }
 }

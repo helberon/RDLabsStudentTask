@@ -33,6 +33,13 @@ And filter users by 'Admin Role' 'Global Admin'
 And I click on the Search button in Filter Users window
 Then I check that Employee with name Cecil Bonaparte is shown in the search result
 
-
 !-- TODO implement this scenario
 Scenario: AC-4 Check that values saved after closing filter users window
+Meta: @newTask @debug
+When I open filter users window
+And filter users by 'Admin Role' 'Global Admin'
+And filter users by 'Status' 'Disabled'
+And I check current state of filters
+And I click on the Search button in Filter Users window
+Then I open filter users window
+And check filters stay same

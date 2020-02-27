@@ -20,6 +20,7 @@ public class FilterUsersModalWindow {
     private WebElementFacade resetButton;
     private WebElementFacade cancelButton;
     private WebElementFacade searchButton;
+    private WebElementFacade formContainer;
 
     public FilterUsersModalWindow(WebElementFacade modalWindow) {
         this.modalWindow = modalWindow;
@@ -33,6 +34,7 @@ public class FilterUsersModalWindow {
         this.resetButton = modalWindow.find(By.xpath("//a[@ng-click='modal.reset()']"));
         this.cancelButton = modalWindow.find(By.xpath("//a[@ng-click='modal.cancel()']"));
         this.searchButton = modalWindow.find(By.xpath("//a[@ng-click='modal.search()']"));
+        this.formContainer = modalWindow.find(By.xpath("//form[@id='frmSystemUserSearch']"));
     }
 
     public void clickOnSearchButton() {

@@ -49,7 +49,7 @@ public class UsersSteps extends DefaultStepsData {
     }
 
     @Step
-    public void filterUsersByStatus(String filter,String filterTarget) {
+    public void filterUsers(String filter, String filterTarget) {
         UsersFilterDropBox dropBox = UsersFilterDropBox.getUsersFilterDropBox(filter);
         switch (dropBox) {
             case STATUS:
@@ -91,5 +91,16 @@ public class UsersSteps extends DefaultStepsData {
             }
         }
         return false;
+    }
+
+    @Step
+    public List<String> checkFilterStatus(){
+        FilterUsersModalWindow filterUsersRoleModalWindow = FILTER_USERS_WINDOW.get();
+        List<WebElementFacade> allDropBoxes= filterUsersRoleModalWindow.getFormContainer().thenFindAll(By.xpath("./..//input[@class='select-dropdown']"));
+        List<String> allStatuses = new ArrayList<>();
+        for (WebElementFacade element:allDropBoxes) {
+            allStatuses.add(element.getValue());
+        }
+        return allStatuses;
     }
 }
