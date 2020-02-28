@@ -4,11 +4,17 @@ import grids.UsersGrid;
 import grids.WorkShiftGrid;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.By;
 import pageComponents.AddWorkShiftModalWindow;
 import pageComponents.TimePicker;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 
 import static utils.SessionVariables.FILTER_USERS_WINDOW;
@@ -67,5 +73,45 @@ public class WorkShiftsSteps extends DefaultStepsData {
     public String checkInputFieldErrorText(){
         AddWorkShiftModalWindow addWorkShift = WORK_SHIFT_ADD_WINDOW.get();
         return addWorkShift.getWorkShiftNameInputField().findBy(By.xpath("../span[@class='help-block']")).getText();
+    }
+
+    @Step
+    public void fillFromField(String hours,String minutes){
+        getAddWorkShiftModalWindow().getFromClockIcon().click();
+        pickUpTime(hours, minutes);
+    }
+
+    @Step
+    public void fillToField(String hours,String minutes){
+        getAddWorkShiftModalWindow().getToClockIcon().click();
+        pickUpTime(hours, minutes);
+    }
+
+    public void pickUpTime(String hours,String minutes){
+        for (WebElementFacade elem : getTimePickerElement().getHoursBoard()) {
+            if (elem.getText().equals(hours)){
+                elem.click();
+            }
+        }
+        for (WebElementFacade elem : getTimePickerElement().getMinutesBoard()) {
+            if (elem.getText().equals(minutes)){
+                elem.click();
+            }
+        }
+        getTimePickerElement().getOkButton().click();
+    }
+
+    public long calculateHoursDiff () throws ParseException{
+        String to = getAddWorkShiftModalWindow().getToInputField().getText();
+        String from = getAddWorkShiftModalWindow().getFromInputField().getText();
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm");
+        Date toDate = dateFormat.parse(to);
+        Date fromDate = dateFormat.parse(from);
+        long diff = toDate.getTime()-fromDate.getTime();
+        return diff;
+    }
+
+    public String getHoursPerShift(){
+       return getAddWorkShiftModalWindow().getHoursPerDayInputField().getValue();
     }
 }

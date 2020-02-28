@@ -18,7 +18,7 @@ And I check that Twilight work shift are shown on work shifts page
 
 !-- TODO implement this scenario
 Scenario: AC-2 Check that Work Shift field on Add work shift model requiired
-Meta: @newTask @debug
+Meta: @newTask
 When I click on Add Work Shift button
 Then I check Work Shift field is empty
 And I click on Save button
@@ -26,6 +26,11 @@ And check that 'Required' message appears under Work Shift field
 
 !-- TODO implement this scenario
 Scenario: AC-3 Check that value in Hours Per Day field calculated propertly
-
-
-
+Meta: @newTask @debug
+When I click on Add Work Shift button
+And pick up 10:50 on From field
+And pick up 18:20 on To field
+Then Check that 7.50 value calculated in Hours Per Day field
+When pick up 8:05 on From field
+And pick up 20:25 on To field
+Then Check that 12.33 value calculated in Hours Per Day field
