@@ -38,7 +38,6 @@ public class LoginPageSteps extends DefaultStepsData {
 
     @Step
     public String getPopUpErrorMessage(){
-        PopUp popUp = new PopUp(loginPage.getErrorPopUp());
-        return popUp.getPopUpMessage();
+        return loginPage.getPopUpElement().getText();
     }
 }

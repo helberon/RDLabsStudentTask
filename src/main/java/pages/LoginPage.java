@@ -32,9 +32,6 @@ public class LoginPage extends BasePage {
     @FindBy(css = ".social-buttons")
     private WebElementFacade socialMediaContainer;
 
-    @FindBy(xpath = "//div[@class='toast toast-error']")
-    private WebElementFacade errorPopUp;
-
     public void enterUserName(String userName) {
         log.info("Login to app with userName " + userName);
         loginInputField.waitUntilVisible().waitUntilClickable().clear();

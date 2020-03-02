@@ -70,6 +70,6 @@ public class LoginPageStepDef extends DefaultStepsData {
 
     @Then("I check that pop up message with text $errorText is shown")
     public void checkPopUpText(String errorText){
-        softly.assertThat(loginPageSteps.getPopUpErrorMessage()).as("Wrong error text in pop up").isEqualTo(errorText);
+        softly.assertThat(loginPageSteps.getPopUpErrorMessage()).as("Wrong error text in pop up").contains(errorText);
     }
 }
