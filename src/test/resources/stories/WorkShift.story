@@ -26,7 +26,7 @@ And check that 'Required' message appears under Work Shift field
 
 !-- TODO implement this scenario
 Scenario: AC-3 Check that value in Hours Per Day field calculated propertly
-Meta: @newTask
+Meta: @newTask @debug
 When I click on Add Work Shift button
 And pick up 10:50 on From field
 And pick up 18:20 on To field

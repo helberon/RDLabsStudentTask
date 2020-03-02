@@ -76,16 +76,23 @@ public class WorkShiftsSteps extends DefaultStepsData {
     }
 
     @Step
-    public void fillFromField(String hours,String minutes){
-        getAddWorkShiftModalWindow().getFromClockIcon().click();
+    public void fillTimeField(String hours, String minutes, String timeBorder){
+        switch (timeBorder){
+            case "From":
+                getAddWorkShiftModalWindow().getFromClockIcon().click();
+                break;
+            case "To":
+                getAddWorkShiftModalWindow().getToClockIcon().click();
+                break;
+        }
         pickUpTime(hours, minutes);
     }
 
-    @Step
-    public void fillToField(String hours,String minutes){
-        getAddWorkShiftModalWindow().getToClockIcon().click();
-        pickUpTime(hours, minutes);
-    }
+//    @Step
+//    public void fillToField(String hours,String minutes){
+//        getAddWorkShiftModalWindow().getToClockIcon().click();
+//        pickUpTime(hours, minutes);
+//    }
 
     public void pickUpTime(String hours,String minutes){
         for (WebElementFacade elem : getTimePickerElement().getHoursBoard()) {

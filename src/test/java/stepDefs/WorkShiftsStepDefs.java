@@ -3,12 +3,8 @@ package stepDefs;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.yecht.Data;
-import pageComponents.AddWorkShiftModalWindow;
 import steps.DefaultStepsData;
 import steps.WorkShiftsSteps;
-
-import java.text.ParseException;
 
 public class WorkShiftsStepDefs extends DefaultStepsData {
 
@@ -40,15 +36,15 @@ public class WorkShiftsStepDefs extends DefaultStepsData {
         softly.assertThat(workShiftsSteps.checkInputFieldErrorText()).as("Wrong message").isEqualTo(textMessage);
     }
 
-    @When("pick up $hours:$minutes on From field")
-    public void getFromTime(String hours,String minutes){
-        workShiftsSteps.fillFromField(hours, minutes);
+    @When("pick up $hours:$minutes on $timeBorder field")
+    public void getFromTime(String hours,String minutes, String timeBorder){
+        workShiftsSteps.fillTimeField(hours, minutes, timeBorder);
     }
 
-    @When("pick up $hours:$minutes on To field")
-    public void getToTime(String hours,String minutes){
-        workShiftsSteps.fillToField(hours, minutes);
-    }
+//    @When("pick up $hours:$minutes on $timeBorder field")
+//    public void getToTime(String hours,String minutes, String timeBorder){
+//        workShiftsSteps.fillTimeField(hours, minutes, timeBorder);
+//    }
 
     @Then("Check that $time value calculated in Hours Per Day field")
     public void checkHoursPerDayCalculatedCorrectness(String time) {
