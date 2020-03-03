@@ -76,18 +76,6 @@ public class WorkShiftsSteps extends DefaultStepsData {
     }
 
     @Step
-<<<<<<< HEAD
-    public void fillFromField(String hours,String minutes){
-        getAddWorkShiftModalWindow().getFromClockIcon().click();
-        pickUpTime(hours, minutes);
-    }
-
-    @Step
-    public void fillToField(String hours,String minutes){
-        getAddWorkShiftModalWindow().getToClockIcon().click();
-        pickUpTime(hours, minutes);
-    }
-=======
     public void fillTimeField(String hours, String minutes, String timeBorder){
         switch (timeBorder){
             case "From":
@@ -105,7 +93,6 @@ public class WorkShiftsSteps extends DefaultStepsData {
 //        getAddWorkShiftModalWindow().getToClockIcon().click();
 //        pickUpTime(hours, minutes);
 //    }
->>>>>>> 89010543a77d37016f3b94b6931aa7465bb21271
 
     public void pickUpTime(String hours,String minutes){
         for (WebElementFacade elem : getTimePickerElement().getHoursBoard()) {
@@ -121,19 +108,6 @@ public class WorkShiftsSteps extends DefaultStepsData {
         getTimePickerElement().getOkButton().click();
     }
 
-<<<<<<< HEAD
-    public long calculateHoursDiff () throws ParseException{
-        String to = getAddWorkShiftModalWindow().getToInputField().getText();
-        String from = getAddWorkShiftModalWindow().getFromInputField().getText();
-        DateFormat dateFormat = new SimpleDateFormat("hh:mm");
-        Date toDate = dateFormat.parse(to);
-        Date fromDate = dateFormat.parse(from);
-        long diff = toDate.getTime()-fromDate.getTime();
-        return diff;
-    }
-
-=======
->>>>>>> 89010543a77d37016f3b94b6931aa7465bb21271
     public String getHoursPerShift(){
        return getAddWorkShiftModalWindow().getHoursPerDayInputField().getValue();
     }

@@ -58,7 +58,7 @@ public class UsersSteps extends DefaultStepsData {
                 filterUsersStatusModalWindow.getStatus().click();
                 List<WebElementFacade> statusList = filterUsersStatusModalWindow.getStatus().thenFindAll(By.xpath("./..//li"));
                 for (WebElementFacade element : statusList) {
-                    statusValues.add(element.waitUntilEnabled().getText());
+                    statusValues.add(element.waitUntilEnabled().waitUntilVisible().getText());
                 }
                 statusList.get(statusValues.indexOf(filterTarget)).click();
                 break;
@@ -68,7 +68,7 @@ public class UsersSteps extends DefaultStepsData {
                 filterUsersRoleModalWindow.getAdminRole().click();
                 List<WebElementFacade> roleList = filterUsersRoleModalWindow.getAdminRole().thenFindAll(By.xpath("./..//li"));
                 for (WebElementFacade element : roleList) {
-                    roleValues.add(element.waitUntilEnabled().getText());
+                    roleValues.add(element.waitUntilEnabled().waitUntilVisible().getText());
                 }
                 roleList.get(roleValues.indexOf(filterTarget)).click();
                 break;
