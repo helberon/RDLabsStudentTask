@@ -5,13 +5,20 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+<<<<<<< HEAD
 import org.openqa.selenium.support.ui.Select;
+=======
+>>>>>>> 89010543a77d37016f3b94b6931aa7465bb21271
 import steps.DefaultStepsData;
 import steps.PersonalDetailsSteps;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import static utils.DateUtils.MY_DATEPATTERN;
+=======
+import static utils.DateUtils.DATEPATTERN_FULL;
+>>>>>>> 89010543a77d37016f3b94b6931aa7465bb21271
 import static utils.DateUtils.getDateInFutureOrPastFromNow;
 import static utils.SessionVariables.DATE_OF_BIRTH;
 
@@ -28,7 +35,11 @@ public class PersonalDatailsStepDef extends DefaultStepsData {
     @When("I change Date of Birth added 1 day to old date")
     public void changeDateOfBirth() {
         String currentDate = personalDetailsSteps.getValueFromDateOfBirthField();
+<<<<<<< HEAD
         String updatedDate = getDateInFutureOrPastFromNow(MY_DATEPATTERN, 1, currentDate);
+=======
+        String updatedDate = getDateInFutureOrPastFromNow(DATEPATTERN_FULL, 1, currentDate);
+>>>>>>> 89010543a77d37016f3b94b6931aa7465bb21271
         personalDetailsSteps.enterDateIntoDateBirthField(updatedDate);
     }
 
@@ -63,7 +74,11 @@ public class PersonalDatailsStepDef extends DefaultStepsData {
 
     @When("I change Date of Birth added 1 day to today's day")
     public void changeDateOfBirthToToday(){
+<<<<<<< HEAD
        String today = getDateInFutureOrPastFromNow(MY_DATEPATTERN,1);
+=======
+       String today = getDateInFutureOrPastFromNow(DATEPATTERN_FULL,1);
+>>>>>>> 89010543a77d37016f3b94b6931aa7465bb21271
         personalDetailsSteps.enterDateIntoDateBirthField(today);
     }
 

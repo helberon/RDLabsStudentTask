@@ -9,7 +9,11 @@ public class DateUtils {
     public final static String DATEPATTERN = "yyyy-MM-dd";
     public final static String DATEPATTERN_US = "MM/dd/yyyy";
     public final static String DATEPATTERN_UK = "yyyy-dd-MM";
+<<<<<<< HEAD
     public final static String MY_DATEPATTERN = "E, dd MMM yyyy";
+=======
+    public final static String DATEPATTERN_FULL = "E, dd MMM yyyy";
+>>>>>>> 89010543a77d37016f3b94b6931aa7465bb21271
 
 
     public static String getCurrentDateInFormat(String datePattern) {
